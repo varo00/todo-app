@@ -13,20 +13,24 @@
 
     <ul class="todolist">
         @for (todo of todolist(); track todo.id) {
-        @if (todo.editing) {
-        <li class="todo-editing">
-            <input type="text" placeholder="Editar tarea">
-        </li>
-        }@else {
-        <li class="todo">
-            <input type="checkbox" [checked]="todo.completed" (change)="todo.completed = !todo.completed">
-            <label>{{todo.title}}</label>
-            @if (!todo.completed) {
-            <button>Editar</button>
-            }
-            <button class="text-red-500" (click)="deleteTodo(todo.id)">Eliminar</button>
-        </li>
-        }
+          @if (todo.editing) {
+            <li class="todo-editing">
+                <input type="text" placeholder="Editar tarea">
+            </li>
+          }@else {
+            <li class="todo">
+                <input
+                    type="checkbox"
+                    [checked]="todo.completed"
+                    (change)="todo.completed = !todo.completed"
+                >
+                <label>{{todo.title}}</label>
+                @if (!todo.completed) {
+                  <button>Editar</button>
+                }
+                <button class="text-red-500" (click)="deleteTodo(todo.id)">Eliminar</button>
+            </li>
+          }
         }
     </ul>
 </section>
